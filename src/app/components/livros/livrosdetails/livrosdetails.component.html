@@ -1,0 +1,23 @@
+<div>
+  <h2>Informe os dados do livro</h2>
+  <div class="form-group">
+    <label for="nome">Título:</label>
+    <input
+      type="text"
+      id="titulo"
+      class="form-control"
+      [(ngModel)]="livro.titulo"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="autor">Autor:</label>
+    <input
+      type="number"
+      id="autor"
+      class="form-control"
+      [(ngModel)]="livro.autor"
+    />
+  </div>
+  <button id="btn-modal" class="btn btn-primary" (click)="save()">Salvar</button>
+</div>

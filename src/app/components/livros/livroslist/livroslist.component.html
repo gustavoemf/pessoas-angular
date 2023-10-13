@@ -1,0 +1,67 @@
+<div class="container">
+  <button id="btn-create" class="btn btn-success" (click)="create(modal1)">
+    Criar
+  </button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+        <th id="acoes" scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let livro of data; index as i">
+        <td>{{ livro.id }}</td>
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.autor }}</td>
+        <td id="acoes">
+          <div class="btn-group" role="group">
+            <button
+              type="button"
+              class="btn btn-warning"
+              (click)="update(modal1, livro)"
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="delete(livro)"
+            >
+              Excluir
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Livro</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-livrosdetails
+      (retorno)="addOrUpdate($event)"
+      [livro]="selected"
+    ></app-livrosdetails>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-light"
+      (click)="modal.close('Close click')"
+    >
+      Fechar
+    </button>
+  </div>
+</ng-template>

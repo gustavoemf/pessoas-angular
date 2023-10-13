@@ -11,12 +11,12 @@ export class PessoasdetailsComponent {
   @Input() pessoa!: Pessoa;
   @Output() retorno = new EventEmitter<Pessoa>();
 
-  pessoaService = inject(PessoasService);
+  service = inject(PessoasService);
 
   constructor() {}
 
   save() {
-    this.pessoaService.save(this.pessoa).subscribe({
+    this.service.save(this.pessoa).subscribe({
       next: (pessoa) => {
         this.retorno.emit(pessoa);
       },
